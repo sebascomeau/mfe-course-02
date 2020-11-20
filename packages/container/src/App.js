@@ -1,21 +1,19 @@
 import React from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import { StylesProvider } from "@material-ui/core/styles";
-
+import Header from "../components/Header";
 import MarketingApp from "../components/mfes/MarketingApp";
 
 const App = () => {
   return (
-    <div>
+    <BrowserRouter>
       <StylesProvider>
-        <h1>Hi container!</h1>
-        <BrowserRouter>
-          <Switch>
-            <Route path="/marketing" component={MarketingApp} />
-          </Switch>
-        </BrowserRouter>
+        <Header />
+        <Switch>
+          <Route path="/marketing" component={MarketingApp} />
+        </Switch>
       </StylesProvider>
-    </div>
+    </BrowserRouter>
   );
 };
 
