@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { mount } from "authentication/AuthenticationApp";
+import { mount } from "auth/AuthApp";
 
-const AuthenticationApp = () => {
+const AuthApp = ({ onSignIn }) => {
   const ref = useRef(null);
   const history = useHistory();
 
@@ -15,6 +15,7 @@ const AuthenticationApp = () => {
           history.push(nextPathname);
         }
       },
+      onSignIn,
     });
 
     if (onParentNavigate) {
@@ -25,4 +26,4 @@ const AuthenticationApp = () => {
   return <div ref={ref}></div>;
 };
 
-export default AuthenticationApp;
+export default AuthApp;

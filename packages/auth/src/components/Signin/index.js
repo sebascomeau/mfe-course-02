@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Avatar,
@@ -42,6 +43,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn({ onSignIn }) {
   const classes = useStyles();
+  const history = useHistory();
+
+  const handleSignIn = () => {
+    onSignIn({
+      givenName: "Sébastien",
+      surname: "Comeau",
+      email: "sebascomeau@gmail.com",
+    });
+
+    history.push("/");
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -89,7 +101,7 @@ export default function SignIn({ onSignIn }) {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={onSignIn}
+            onClick={handleSignIn}
           >
             Sign In
           </Button>
