@@ -15,6 +15,8 @@ const devConfig = {
     historyApiFallback: {
       index: "index.html",
     },
+    open: true,
+    openPage: "auth/signin",
   },
   plugins: [
     new ModuleFederationPlugin({

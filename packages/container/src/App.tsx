@@ -4,11 +4,14 @@ import {
   StylesProvider,
   createGenerateClassName,
 } from "@material-ui/core/styles";
-import { createBrowserHistory } from "history";
+import { CssBaseline } from "@material-ui/core";
 
+import { createBrowserHistory } from "history";
 import Progress from "./components/Progress";
 import Header from "./components/Header";
-import { CssBaseline } from "@material-ui/core";
+
+import { User, OnSignInFunction, OnSignOutFunction } from '../types';
+
 
 const MarketingLazy = lazy(() => import("./components/mfe/MarketingApp"));
 const AuthAppLazy = lazy(() => import("./components/mfe/AuthApp"));
@@ -21,13 +24,13 @@ const generateClassName = createGenerateClassName({
 const history = createBrowserHistory();
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
 
-  const onSignIn = (user) => {
+  const onSignIn: OnSignInFunction = (user: User) => {
     setCurrentUser(user);
   };
 
-  const onSignOut = () => {
+  const onSignOut: OnSignOutFunction = () => {
     setCurrentUser(null);
   };
 

@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Button, Toolbar, Typography } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
+import { User, OnSignOutFunction } from '../../../types';
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -51,7 +52,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = ({ currentUser, onSignOut }) => {
+interface HeaderProps {
+  currentUser?: User | null;
+  onSignOut?: OnSignOutFunction;
+}
+
+const Header = ({ currentUser, onSignOut }: HeaderProps) => {
   const classes = useStyles();
 
   const onClick = () => {
