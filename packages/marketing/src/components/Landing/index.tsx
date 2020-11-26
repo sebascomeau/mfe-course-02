@@ -10,7 +10,6 @@ import {
   Grid,
   Typography,
   Container,
-  Link as MaterialLink,
 } from "@material-ui/core";
 import Copyright from "../Copyright";
 

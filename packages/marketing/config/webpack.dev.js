@@ -18,7 +18,7 @@ const devConfig = {
     open: true,
   },
   output: {
-    publicPath: "auto",
+    publicPath: `http://localhost:${port}/`,
   },
   plugins: [
     new ModuleFederationPlugin({

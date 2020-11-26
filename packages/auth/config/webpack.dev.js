@@ -7,9 +7,6 @@ const port = 8082;
 
 const devConfig = {
   mode: "development",
-  output: {
-    publicPath: `http://localhost:${port}/`,
-  },
   devServer: {
     port,
     historyApiFallback: {
@@ -17,6 +14,9 @@ const devConfig = {
     },
     open: true,
     openPage: "auth/signin",
+  },
+  output: {
+    publicPath: `http://localhost:${port}/`,
   },
   plugins: [
     new ModuleFederationPlugin({
