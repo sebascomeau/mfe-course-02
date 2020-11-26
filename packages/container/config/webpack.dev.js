@@ -15,6 +15,7 @@ const devConfig = {
     historyApiFallback: {
       index: "index.html",
     },
+    open: true,
   },
   plugins: [
     new ModuleFederationPlugin({

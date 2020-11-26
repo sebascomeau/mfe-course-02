@@ -13,9 +13,9 @@ import Header from "./components/Header";
 import { User, OnSignInFunction, OnSignOutFunction } from '../types';
 
 
-const MarketingLazy = lazy(() => import("./components/mfe/MarketingApp"));
-const AuthAppLazy = lazy(() => import("./components/mfe/AuthApp"));
-const DashboardLazy = lazy(() => import("./components/mfe/DashboardApp"));
+const MarketingLazy = lazy(() => import("./components/microfrontends/MarketingApp"));
+const AuthAppLazy = lazy(() => import("./components/microfrontends/AuthApp"));
+const DashboardLazy = lazy(() => import("./components/microfrontends/DashboardApp"));
 
 const generateClassName = createGenerateClassName({
   productionPrefix: "co",
