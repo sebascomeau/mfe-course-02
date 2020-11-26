@@ -1,5 +1,7 @@
 const { merge } = require("webpack-merge");
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const ModuleFederationPlugin = require("webpack").container
+  .ModuleFederationPlugin;
+const path = require("path");
 const commonConfig = require("./webpack.common");
 const { dependencies } = require("../package.json");
 
@@ -7,15 +9,16 @@ const port = 8081;
 
 const devConfig = {
   mode: "development",
-  output: {
-    publicPath: `http://localhost:${port}/`,
-  },
   devServer: {
+    contentBase: path.join(__dirname, "dist"),
     port,
     historyApiFallback: {
       index: "index.html",
     },
     open: true,
+  },
+  output: {
+    publicPath: "auto",
   },
   plugins: [
     new ModuleFederationPlugin({

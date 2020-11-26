@@ -1,13 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createMemoryHistory, createBrowserHistory } from "history";
+import { createMemoryHistory, createBrowserHistory, History, Pathname } from "history";
 import App from "./App";
 
-const mount = (el, { onNavigate, defaultHistory, initialPath } = {}) => {
+type MountOptions = {
+  onNavigate?: History.LocationListener;
+  defaultHistory?: History;
+  initialPath?: string;
+}
+
+const mount = (el: Element, { onNavigate, defaultHistory, initialPath }: MountOptions = {}) => {
   const history =
     defaultHistory ??
     createMemoryHistory({
-      initialEntries: [initialPath],
+      initialEntries: [initialPath ?? ""],
     });
 
   if (onNavigate) {
@@ -17,7 +23,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath } = {}) => {
   ReactDOM.render(<App history={history} />, el);
 
   return {
-    onParentNavigate({ pathname: nextPathname }) {
+    onParentNavigate({ pathname: nextPathname }: { pathname: Pathname }) {
       const { pathname } = history.location;
       if (pathname !== nextPathname) {
         history.push(nextPathname);

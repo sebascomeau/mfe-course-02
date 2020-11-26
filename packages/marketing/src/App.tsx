@@ -1,5 +1,6 @@
 import React from "react";
-import { Switch, Route, Router } from "react-router-dom";
+import { Switch, Route, Router, RouteChildrenProps } from "react-router-dom";
+import { History } from "history";
 import {
   StylesProvider,
   createGenerateClassName,
@@ -10,7 +11,11 @@ import Pricing from "./components/Pricing";
 
 const generateClassName = createGenerateClassName({ productionPrefix: "mkt" });
 
-const App = ({ history }) => {
+type AppProps = {
+  history: History
+}
+
+const App = ({ history }: AppProps) => {
   return (
     <div>
       <StylesProvider generateClassName={generateClassName}>
